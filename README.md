@@ -21,13 +21,3 @@ Matplotlib / Seaborn: For visualizing data distributions, model performance, and
 🗂️ Infrastructure (Suggested)
 Cloud Hosting (Heroku, AWS, GCP): To deploy the Flask app
 Salesforce Developer Edition: For testing and integration
-
-
-
-
-
-
-
-
-
-Ask ChatGPT
