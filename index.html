@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                        <h1 class="display-5 fw-bold">E-commerce Fraud Detection</h1>
+                        <div class="border-bottom my-4"></div>
+                    </div>
+                    
+                    <p class="lead mb-4">Protect your e-commerce transactions with our multi-perspective fraud detection system.</p>
+                    
+                    {% if current_user.is_authenticated %}
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg px-4 py-2 shadow">
+                                <i class="fas fa-search me-2"></i>Detect Fraud
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="p-4 bg-light rounded-3 mb-4">
+                            <p class="mb-3">Ready to secure your transactions? You'll need an account first.</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="{{ url_for('login') }}" class="btn btn-outline-primary px-4">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Log In
+                                </a>
+                                <a href="{{ url_for('register') }}" class="btn btn-primary px-4">
+                                    <i class="fas fa-user-plus me-2"></i>Register
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="mt-5 text-muted">
+                <p class="small">Our system analyzes transactions from multiple perspectives to identify potential fraud.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

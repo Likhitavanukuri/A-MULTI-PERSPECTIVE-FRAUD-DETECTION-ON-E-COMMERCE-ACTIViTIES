@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Fraud Detection History{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Fraud Detection History</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Buyer ID</th>
+                    <th>Seller ID</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Result</th>
+                    <th>Detected At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detection in detections %}
+                <tr>
+                    <td>{{ detection.buyer_id }}</td>
+                    <td>{{ detection.seller_id }}</td>
+                    <td>${{ detection.amount }}</td>
+                    <td>{{ detection.payment_method }}</td>
+                    <td>
+                        <span class="badge bg-{{ 'danger' if detection.result == 'Fraudulent' else 'success' }}">
+                            {{ detection.result }}
+                        </span>
+                    </td>
+                    <td>{{ detection.detected_at }}</td> <!-- Remove strftime since it's already a string -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ url_for('detect') }}" class="btn btn-primary">Analyze Another Transaction</a>
+</div>
+{% endblock %}

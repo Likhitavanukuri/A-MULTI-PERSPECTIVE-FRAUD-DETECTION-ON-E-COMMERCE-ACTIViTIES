@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Fraud Detection Result{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Fraud Detection Result</h1>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Buyer ID:</strong> {{ detection.buyer_id }}</p>
+            <p><strong>Seller ID:</strong> {{ detection.seller_id }}</p>
+            <p><strong>Amount:</strong> ${{ detection.amount }}</p>
+            <p><strong>Payment Method:</strong> {{ detection.payment_method }}</p>
+            <p><strong>Result:</strong> 
+                <span class="badge bg-{{ 'danger' if detection.result == 'Fraudulent' else 'success' }}">
+                    {{ detection.result }}
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="{{ url_for('detect') }}" class="btn btn-primary">Analyze Another Transaction</a>
+        <a href="{{ url_for('history') }}" class="btn btn-outline-primary">View History</a>
+    </div>
+</div>
+{% endblock %}
